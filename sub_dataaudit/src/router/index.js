@@ -40,9 +40,9 @@ export const constantRouterMap = [
         props: { task_id: '20210122154043000005009442942227' }
       },
       {
-        path: '/dataaudit_detail',
-        component: () => import('@/views/demoTable/DetailList'),
+        path: 'detail',
         name: 'detail',
+        component: () => import('@/views/demoTable/DetailList'),
         meta: { title: '详情', isBack: true },
         props: true
       }

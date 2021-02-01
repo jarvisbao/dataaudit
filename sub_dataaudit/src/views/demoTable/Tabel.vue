@@ -76,6 +76,7 @@
 </template>
 <script>
 import CommonTitle from '@/components/CommonTitle'
+import { Base64 } from 'js-base64'
 export default {
   components: {
     CommonTitle
@@ -105,9 +106,11 @@ export default {
     }
   },
   created() {
-    this.$Apis.dataaudit.tabel_data(this.task_id).then(response => {
-      this.items = response.payload.items
+    this.$Apis.dataaudit.tabel_data(JSON.parse(Base64.decode(this.$route.query.param)).id).then(response => {
+      this.items = response.payload.items || []
       sessionStorage.dataaudit_detail = JSON.stringify(response.payload.items)
+    }).catch(() => {
+
     })
   }
 }
